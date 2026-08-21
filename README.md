@@ -92,6 +92,12 @@ one GPU almost for free — a second job costs the incumbent 3.7%, and aggregate
 throughput saturates around 20 steps/s. `PARALLEL` exploits that; arms in one
 batch also see identical load, which is what makes their wall-clock comparable.
 
+## Handover
+
+If you are picking this up from someone else, start with [HANDOVER.md](HANDOVER.md):
+current state of each line, the one job still running, and the pre-registered
+rules that are easy to break by accident.
+
 ## Moving to another machine
 
 Of the 19 GB experiment tree only 179 MB is irreplaceable - five checkpoints
