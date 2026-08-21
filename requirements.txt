@@ -1,0 +1,8 @@
+# Install a CUDA-compatible PyTorch / torchaudio build separately; the pinned
+# results were produced with torch 2.12.0+cu130 on an A100-SXM4-40GB.
+huggingface-hub>=0.20
+fast-bss-eval==0.1.4
+numpy>=1.24
+ptflops>=0.7.5
+PyYAML>=6
+soundfile>=0.12

@@ -1,0 +1,35 @@
+{
+  "model": "tdanet",
+  "split": "tr",
+  "pruned_label": "init",
+  "data_root": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/data/LRS2-2Mix",
+  "audio_root": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/data/LRS2-2Mix/lrs2_rebuild/audio/wav16k/min",
+  "samples_per_mixture": 32000,
+  "dense_checkpoint": {
+    "path": "/home/xiaoqin_feng/.cache/huggingface/hub/models--JusperLee--TDANetBest-4ms-LRS2/blobs/0048bdb31c71e8ec9c694e828ef268e7483051358bb1d309c8959bafb9a4b958",
+    "sha256": "0048bdb31c71e8ec9c694e828ef268e7483051358bb1d309c8959bafb9a4b958"
+  },
+  "masks": {
+    "path": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/tdanet_lrs2_mask/mask.pt",
+    "sha256": "500d1437dfb73c30d75334784d04c20c1864d270cb77b6ffc48beab4baa772da"
+  },
+  "pruned_checkpoint": null,
+  "dense_reused_from": null,
+  "pruned_parameters": 2030463,
+  "batch_size": 1,
+  "limit": null,
+  "population_complete": true,
+  "device": "cuda",
+  "torch_version": "2.12.0+cu130",
+  "tf32": {
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false
+  },
+  "git_commit": "21372eccb072c23fd1bc8597a61b4d8560afba5f",
+  "scored_at_utc": "2026-08-21T05:02:04Z",
+  "elapsed_seconds": 26656.129364563152,
+  "schema_version": "data-pruning-scores/1",
+  "count": 20000,
+  "written_at_utc": "2026-08-21T05:02:04Z",
+  "rows_sha256": "024b179a813e45ce64de66f6d8bbf2d0cbbb0a96cbd4409b2d627ba3473c71e4"
+}

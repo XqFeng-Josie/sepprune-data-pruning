@@ -1,0 +1,35 @@
+{
+  "model": "sudormrf",
+  "split": "tr",
+  "pruned_label": "init",
+  "data_root": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/data/LRS2-2Mix",
+  "audio_root": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/data/LRS2-2Mix/lrs2_rebuild/audio/wav16k/min",
+  "samples_per_mixture": 32000,
+  "dense_checkpoint": {
+    "path": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/original_sudormrf_lrs2_train/best.pt",
+    "sha256": "2ef26d2e6707e3094839f8e37f7752d7c6038399d79f724847fef58b13fad5e1"
+  },
+  "masks": {
+    "path": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_sudormrf_lrs2_e07_seed2026/masks.pt",
+    "sha256": "69ed6fe4a66bfec0e7a602f00b232b0c4ce38c414e8b38a842e2c7fe42b175c2"
+  },
+  "pruned_checkpoint": null,
+  "dense_reused_from": null,
+  "pruned_parameters": 1539895,
+  "batch_size": 32,
+  "limit": null,
+  "population_complete": true,
+  "device": "cuda",
+  "torch_version": "2.12.0+cu130",
+  "tf32": {
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false
+  },
+  "git_commit": "21372eccb072c23fd1bc8597a61b4d8560afba5f",
+  "scored_at_utc": "2026-08-19T23:35:51Z",
+  "elapsed_seconds": 249.3778678085655,
+  "schema_version": "data-pruning-scores/1",
+  "count": 20000,
+  "written_at_utc": "2026-08-19T23:35:51Z",
+  "rows_sha256": "761230d7725d5fbb58405d7c206f2825aff6f4a8f1caa8da7a75c6ebe200c21b"
+}

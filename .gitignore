@@ -1,0 +1,13 @@
+# Datasets and everything derived from a training run. `results/` holds the
+# small, committed extracts; `experiments/` is the multi-gigabyte working tree.
+data/
+experiments/
+logs/
+
+# Fetched at pinned commits by scripts/bootstrap.sh, never vendored.
+third_party/
+
+.venv/
+__pycache__/
+*.py[cod]
+data
