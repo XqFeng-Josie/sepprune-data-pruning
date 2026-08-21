@@ -9,7 +9,10 @@
 #   PYTHON_BIN=.venv/bin/python bash scripts/run_data_pruning_stage_a.sh
 #
 # Environment overrides:
-#   MODEL          afrcnn12 | sudormrf             (default: afrcnn12)
+#   MODEL          afrcnn12 | sudormrf | tdanet    (default: afrcnn12)
+#   TOTAL_UPDATES / SNAPSHOTS / NUM_WORKERS also honoured; TDANet needs a
+#   lower PARALLEL than the others because each run peaks at ~3.0 GB of GPU
+#   memory against A-FRCNN's ~1.4 GB.
 #   KEEPS          space-separated keep budgets    (default: "10000")
 #   SEEDS          space-separated arm seeds       (default: "2026")
 #   ARMS           space-separated arm names       (default: all of stage A1)
@@ -61,8 +64,22 @@ case "${MODEL}" in
     DENSE_SHA="2ef26d2e6707e3094839f8e37f7752d7c6038399d79f724847fef58b13fad5e1"
     MASKS_SHA="69ed6fe4a66bfec0e7a602f00b232b0c4ce38c414e8b38a842e2c7fe42b175c2"
     DEFAULT_ROOT="experiments/data_pruning_sudormrf" ;;
+  tdanet)
+    # The dense TDANet is the published checkpoint, not one trained here, so it
+    # is resolved from the Hugging Face cache. Its attention mixes across the
+    # batch (see the plan's §13.2), which is why scoring is pinned to batch 1.
+    DENSE="${TDANET_CHECKPOINT:-$(python - <<'PYX'
+from huggingface_hub import hf_hub_download
+print(hf_hub_download("JusperLee/TDANetBest-4ms-LRS2", "pytorch_model.bin",
+                      revision="d10e423ef25bc6f09f907455feb3f1030e9e3add"))
+PYX
+)}"
+    MASKS="experiments/tdanet_lrs2_mask/mask.pt"
+    DENSE_SHA="0048bdb31c71e8ec9c694e828ef268e7483051358bb1d309c8959bafb9a4b958"
+    MASKS_SHA="500d1437dfb73c30d75334784d04c20c1864d270cb77b6ffc48beab4baa772da"
+    DEFAULT_ROOT="experiments/data_pruning_tdanet" ;;
   *)
-    echo "unknown MODEL: ${MODEL} (expected afrcnn12 or sudormrf)" >&2; exit 1 ;;
+    echo "unknown MODEL: ${MODEL} (expected afrcnn12, sudormrf or tdanet)" >&2; exit 1 ;;
 esac
 # Each backbone keeps its own tree: the scores, the subsets derived from them and
 # the runs are all specific to one dense/mask pair.
