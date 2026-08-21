@@ -90,21 +90,29 @@ def export_runs(tree: Path, model: str, rows: list[dict]) -> None:
 
 
 def export_tt_eval(tree: Path, model: str, rows: list[dict]) -> None:
-    path = tree / "tt_eval.json"
-    if not path.is_file():
-        return
-    for key, value in json.loads(path.read_text(encoding="utf-8")).items():
-        match = CKPT_PATTERN.search(key)
-        rows.append(
-            {
-                "model": model,
-                "keep": int(match.group(1)) if match else "",
-                "arm": value.get("arm", ""),
-                "seed": value.get("seed", ""),
-                "global_step": value.get("global_step", ""),
-                "si_sdri": round(value["si_sdri"], 6),
-            }
-        )
+    """Collect every tt_eval*.json in the tree.
+
+    `n_test` is not decoration. TDANet must be evaluated one mixture at a time
+    (its attention is batch-dependent), which is slow enough that its runs use a
+    fixed 1,000-mixture subset while the other two use all 3,000. Rows from the
+    two regimes are directly comparable within a model but not across, so the
+    count travels with every row.
+    """
+
+    for path in sorted(tree.glob("tt_eval*.json")):
+        for key, value in json.loads(path.read_text(encoding="utf-8")).items():
+            match = CKPT_PATTERN.search(key)
+            rows.append(
+                {
+                    "model": model,
+                    "keep": int(match.group(1)) if match else "",
+                    "arm": value.get("arm", ""),
+                    "seed": value.get("seed", ""),
+                    "global_step": value.get("global_step", ""),
+                    "n_test": value.get("n_test", len(value.get("per_sample", [])) or 3000),
+                    "si_sdri": round(value["si_sdri"], 6),
+                }
+            )
 
 
 SMOKE = ("smoke", "_smoke")
@@ -205,7 +213,7 @@ def main() -> None:
     )
 
     runs = write_csv(out / "runs.csv", run_rows, ("model", "keep", "arm", "seed"))
-    evals = write_csv(out / "tt_eval.csv", eval_rows, ("model", "keep", "arm", "seed", "global_step"))
+    evals = write_csv(out / "tt_eval.csv", eval_rows, ("model", "keep", "arm", "seed", "global_step", "n_test"))
     print(f"\nresults/runs.csv     {runs} rows")
     print(f"results/tt_eval.csv  {evals} rows")
 
