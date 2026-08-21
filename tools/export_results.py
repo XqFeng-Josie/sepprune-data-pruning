@@ -3,12 +3,16 @@
 A full run tree is ~18 GB, almost all of it checkpoints. What is worth keeping
 under version control is the part that is expensive to recompute but small:
 
-    scores/    the per-sample dense/pruned scores for the whole training split
-               (~20 min of GPU each, 8 MB) - every subset in the study is a
-               deterministic function of these plus a method and a seed
-    runs.csv   one row per training run: its arm, seed, keep budget, timings
-               and provenance hashes
-    tt_eval.csv  one row per evaluated checkpoint: the test-set SI-SDRi
+    scores/       per-sample dense/pruned scores for the whole training split
+                  (20 min to 7 h of GPU each) - every subset in the study is a
+                  deterministic function of these plus a method and a seed
+    masks/        the frozen channel masks that define each pruned structure;
+                  without them nothing downstream can be rebuilt
+    reproduction/ the full-test-set summaries and validation curves behind the
+                  reproduction tables, plus the pre-flight probe
+    runs.csv      one row per training run: arm, seed, keep budget, timings,
+                  provenance hashes
+    tt_eval.csv   one row per evaluated checkpoint: the test-set SI-SDRi
 
 Deliberately excluded: checkpoints (15 GB), the per-sample arrays inside
 tt_eval.json (~18 MB of floats that only the aggregate is ever read from), and
@@ -103,6 +107,59 @@ def export_tt_eval(tree: Path, model: str, rows: list[dict]) -> None:
         )
 
 
+SMOKE = ("smoke", "_smoke")
+
+
+def export_reproduction(root: Path, out: Path) -> dict[str, int]:
+    """Copy the reproduction line's small artefacts.
+
+    Summaries and masks are tiny and are what every table in `docs/` cites.
+    `validation.csv` is kept because the convergence and learning-rate analyses
+    read it; `training.csv` is not - it is 200-365 MB of per-step rows whose
+    only aggregate use is the timing already recorded in the summaries.
+    """
+
+    counts = {"summaries": 0, "masks": 0, "curves": 0, "preflight": 0}
+
+    target = out / "reproduction" / "test_summaries"
+    target.mkdir(parents=True, exist_ok=True)
+    for path in sorted(root.glob("*/*_tt_summary.json")):
+        if any(token in path.parent.name for token in SMOKE):
+            continue
+        shutil.copy2(path, target / f"{path.parent.name}__{path.name}")
+        counts["summaries"] += 1
+
+    target = out / "reproduction" / "masks"
+    target.mkdir(parents=True, exist_ok=True)
+    for pattern in ("*/masks.pt", "*/mask.pt"):
+        for path in sorted(root.glob(pattern)):
+            if any(token in path.parent.name for token in SMOKE):
+                continue
+            shutil.copy2(path, target / f"{path.parent.name}__{path.name}")
+            counts["masks"] += 1
+
+    target = out / "reproduction" / "curves"
+    target.mkdir(parents=True, exist_ok=True)
+    for path in sorted(root.glob("*/validation.csv")):
+        if any(token in path.parent.name for token in SMOKE) or "data_pruning" in path.parent.name:
+            continue
+        shutil.copy2(path, target / f"{path.parent.name}__validation.csv")
+        counts["curves"] += 1
+    for path in sorted(root.glob("*/result.json")):
+        if any(token in path.parent.name for token in SMOKE) or "data_pruning" in path.parent.name:
+            continue
+        shutil.copy2(path, target / f"{path.parent.name}__result.json")
+
+    probe = root / "data_pruning_preflight"
+    if probe.is_dir():
+        target = out / "reproduction" / "preflight"
+        target.mkdir(parents=True, exist_ok=True)
+        for path in sorted(probe.glob("*.json")):
+            shutil.copy2(path, target / path.name)
+            counts["preflight"] += 1
+    return counts
+
+
 def write_csv(path: Path, rows: list[dict], sort_by: tuple[str, ...]) -> int:
     if not rows:
         return 0
@@ -140,6 +197,12 @@ def main() -> None:
         export_runs(tree, model, run_rows)
         export_tt_eval(tree, model, eval_rows)
         print(f"{tree.name:<28} model={model:<10} score files: {len(scores)}")
+
+    counts = export_reproduction(root, out)
+    print(
+        f"\nreproduction/  {counts['summaries']} test summaries, {counts['masks']} masks, "
+        f"{counts['curves']} validation curves, {counts['preflight']} pre-flight files"
+    )
 
     runs = write_csv(out / "runs.csv", run_rows, ("model", "keep", "arm", "seed"))
     evals = write_csv(out / "tt_eval.csv", eval_rows, ("model", "keep", "arm", "seed", "global_step"))

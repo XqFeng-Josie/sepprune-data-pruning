@@ -1,0 +1,13 @@
+{
+  "model": "sudormrf",
+  "checkpoint": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/original_sudormrf_lrs2_train/best.pt",
+  "split": "tt",
+  "count": 3000,
+  "parameters": 2720417,
+  "paper_original_lrs2_sdri": 11.43,
+  "paper_original_lrs2_si_sdri": 11.1,
+  "sdr": 10.775447913954656,
+  "sdri": 10.540870391339064,
+  "si_sdr": 10.16333162355423,
+  "si_sdri": 10.164105408862234
+}

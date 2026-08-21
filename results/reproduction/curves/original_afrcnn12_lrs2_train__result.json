@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "stop_reason": "epochs_completed",
+  "model": "afrcnn12",
+  "parameters": 5127688,
+  "global_step": 2720000,
+  "best_val_si_sdr": 11.08553931376189,
+  "elapsed_seconds_this_run": 491491.3601186294,
+  "output_dir": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/original_afrcnn12_lrs2_train"
+}

@@ -1,0 +1,13 @@
+{
+  "model": "tdanet",
+  "checkpoint": "JusperLee/TDANetBest-4ms-LRS2",
+  "split": "tt",
+  "count": 3000,
+  "parameters": 2353479,
+  "paper_original_lrs2_sdri": 12.74,
+  "paper_original_lrs2_si_sdri": 12.45,
+  "sdr": 13.957290677368642,
+  "sdri": 13.722713162392377,
+  "si_sdr": 13.436957163443168,
+  "si_sdri": 13.437730953852336
+}

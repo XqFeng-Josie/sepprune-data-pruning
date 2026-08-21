@@ -1,0 +1,18 @@
+{
+  "model": "afrcnn12",
+  "label": "budgeted_1epoch",
+  "checkpoint": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_afrcnn12_lrs2_finetune/epoch1.pt",
+  "masks": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_afrcnn12_lrs2_e07_seed2026/masks.pt",
+  "split": "tt",
+  "count": 3000,
+  "parameters": 3059372,
+  "paper_original_sdri": 10.9,
+  "paper_original_si_sdri": 10.5,
+  "paper_pruned_parameters": 3060000,
+  "paper_pruned_sdri": 12.59,
+  "paper_pruned_si_sdri": 12.25,
+  "sdr": 11.167593519707522,
+  "sdri": 10.933016007731359,
+  "si_sdr": 10.521218401958546,
+  "si_sdri": 10.521992184092602
+}

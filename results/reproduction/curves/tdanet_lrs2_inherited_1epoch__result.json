@@ -1,0 +1,13 @@
+{
+  "status": "completed",
+  "label": "pruned_inherited_1epoch",
+  "initialization": "inherited",
+  "epochs_requested": 1,
+  "completed_steps": 20000,
+  "training_examples": 20000,
+  "parameters": 2030463,
+  "mask_kept": 711,
+  "learning_rate": 0.001,
+  "final_checkpoint": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/tdanet_lrs2_inherited_1epoch/final.pt",
+  "elapsed_seconds": 10765.856354958378
+}

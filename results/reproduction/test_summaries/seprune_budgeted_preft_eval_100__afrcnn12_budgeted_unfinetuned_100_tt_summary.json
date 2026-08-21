@@ -1,0 +1,18 @@
+{
+  "model": "afrcnn12",
+  "label": "budgeted_unfinetuned_100",
+  "checkpoint": "inherited_unfinetuned",
+  "masks": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_afrcnn12_lrs2_e07_seed2026/masks.pt",
+  "split": "tt",
+  "count": 100,
+  "parameters": 3059372,
+  "paper_original_sdri": 10.9,
+  "paper_original_si_sdri": 10.5,
+  "paper_pruned_parameters": 3060000,
+  "paper_pruned_sdri": 12.59,
+  "paper_pruned_si_sdri": 12.25,
+  "sdr": 7.701520073413849,
+  "sdri": 7.447041385173797,
+  "si_sdr": 6.831806762814522,
+  "si_sdri": 6.822876585125923
+}

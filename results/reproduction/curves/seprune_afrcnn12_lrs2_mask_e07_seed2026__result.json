@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "implementation": "independent reconstruction from released mask/finetune scripts",
+  "known_missing_source": "authors' private look2hear *_pruned.py and ChannelMask1D",
+  "model": "afrcnn12",
+  "baseline_checkpoint": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/original_afrcnn12_lrs2_train/best.pt",
+  "dataset_root": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/data/LRS2-2Mix/lrs2_rebuild/audio/wav16k/min",
+  "training_examples": 20000,
+  "iterations": 500,
+  "seed": 2026,
+  "epsilon": 0.7,
+  "temperature": 1.0,
+  "optimizer": "Adam",
+  "learning_rate": 0.1,
+  "gradient_clip": 1.0,
+  "loss": "released YAML: PIT pairwise negative SNR",
+  "batch_size": 1,
+  "segment_samples": 32000,
+  "mask_count": 4,
+  "channels_total": [
+    512,
+    512,
+    512,
+    512
+  ],
+  "channels_kept": [
+    468,
+    449,
+    441,
+    380
+  ],
+  "original_parameters": 5127688,
+  "pruned_parameters": 4581990,
+  "paper_pruned_parameters": 3060000,
+  "parameter_reduction": 0.10642184157850476,
+  "elapsed_seconds": 90.83635511714965
+}

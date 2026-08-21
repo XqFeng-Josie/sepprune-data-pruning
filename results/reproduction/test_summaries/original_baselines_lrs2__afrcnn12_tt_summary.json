@@ -1,0 +1,13 @@
+{
+  "model": "afrcnn12",
+  "checkpoint": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/original_afrcnn12_lrs2_train/best.pt",
+  "split": "tt",
+  "count": 3000,
+  "parameters": 5127688,
+  "paper_original_lrs2_sdri": 10.9,
+  "paper_original_lrs2_si_sdri": 10.5,
+  "sdr": 12.077720771536232,
+  "sdri": 11.843143255154292,
+  "si_sdr": 11.486175647646188,
+  "si_sdri": 11.486949434240659
+}

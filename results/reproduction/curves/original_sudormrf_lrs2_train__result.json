@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "stop_reason": "early_stopped",
+  "model": "sudormrf",
+  "parameters": 2720417,
+  "global_step": 3880000,
+  "best_val_si_sdr": 9.848919827836752,
+  "elapsed_seconds_this_run": 294808.33388626855,
+  "output_dir": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/original_sudormrf_lrs2_train"
+}

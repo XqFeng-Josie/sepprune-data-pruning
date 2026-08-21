@@ -1,0 +1,11 @@
+{
+  "model": "pruned",
+  "split": "tt",
+  "count": 10,
+  "paper_original_tdanet_lrs2_sdri": 12.74,
+  "paper_original_tdanet_lrs2_si_sdri": 12.45,
+  "sdr": 13.241893482208251,
+  "sdri": 13.033094215393067,
+  "si_sdr": 12.718669605255126,
+  "si_sdri": 12.736971616744995
+}

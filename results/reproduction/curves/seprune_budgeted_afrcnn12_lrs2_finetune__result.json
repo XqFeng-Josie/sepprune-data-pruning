@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "stop_reason": "early_stopped",
+  "model": "afrcnn12",
+  "parameters": 3059372,
+  "global_step": 2600000,
+  "best_val_si_sdr": 11.092146798917652,
+  "elapsed_seconds_this_run": 505077.0128322616,
+  "output_dir": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_afrcnn12_lrs2_finetune"
+}

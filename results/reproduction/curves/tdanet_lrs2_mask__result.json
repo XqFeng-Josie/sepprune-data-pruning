@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "implementation": "independent reconstruction from released scripts",
+  "dataset_root": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/data/LRS2-2Mix/lrs2_rebuild/audio/wav16k/min",
+  "training_examples": 20000,
+  "iterations": 500,
+  "seed": 2026,
+  "epsilon": 0.7,
+  "temperature": 1.0,
+  "channels_total": 1024,
+  "channels_kept": 711,
+  "original_parameters": 2353479,
+  "pruned_parameters": 2030463
+}

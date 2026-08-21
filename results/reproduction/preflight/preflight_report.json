@@ -1,0 +1,147 @@
+{
+  "generated_at_utc": "2026-08-13T08:48:59Z",
+  "git_commit": "21372eccb072c23fd1bc8597a61b4d8560afba5f",
+  "device": "cuda",
+  "samples": 600,
+  "seed": 11,
+  "selected_fraction": 0.375,
+  "checkpoints": {
+    "dense": {
+      "path": "experiments/original_afrcnn12_lrs2_train/best.pt",
+      "sha256": "6f9dc2c700b03ed38bf6070e0b0929269fa2f43d1b8b0239229724145c322da6"
+    },
+    "masks": {
+      "path": "experiments/seprune_budgeted_afrcnn12_lrs2_e07_seed2026/masks.pt",
+      "sha256": "13a774ee64c587ac7b7f9e82e2e37070c1ee6258a5aeb9206ffe4e2bce540433"
+    },
+    "pruned_1ep": {
+      "path": "experiments/seprune_budgeted_afrcnn12_lrs2_finetune/epoch1.pt",
+      "sha256": "846211ee52f5069da012f5d9a0cd446c523ea79bfb388cf2a8824a0f39e39c80"
+    },
+    "pruned_long": {
+      "path": "experiments/seprune_budgeted_afrcnn12_lrs2_finetune/best.pt",
+      "sha256": "f22f8d9c84d238911a21f2ea704c132474e218e7d11382c55e82e60eb1980708"
+    }
+  },
+  "pruned_parameters": 3059372,
+  "distributions": {
+    "q_dense_tr": {
+      "mean": 14.076379820505778,
+      "sd": 1.6262047082901763,
+      "min": 8.528926849365234,
+      "max": 19.198863983154297
+    },
+    "q_dense_tt": {
+      "mean": 11.392992749114832,
+      "sd": 3.479733323312024,
+      "min": -3.860049247741699,
+      "max": 18.374713897705078
+    },
+    "q_pruned_at_init": {
+      "mean": 6.694635970095794,
+      "sd": 3.5908055126344562,
+      "min": -5.564745903015137,
+      "max": 13.808906555175781
+    },
+    "q_pruned_at_1ep": {
+      "mean": 11.21450543269515,
+      "sd": 2.537621420317083,
+      "min": -3.5744071006774902,
+      "max": 16.59013557434082
+    },
+    "gap_db_at_init": {
+      "mean": 7.381743850409984,
+      "sd": 3.3695524098535206,
+      "min": 2.7856836318969727,
+      "max": 21.941623210906982
+    },
+    "gap_db_at_1ep": {
+      "mean": 2.8618743878106274,
+      "sd": 1.9742774750711063,
+      "min": 0.6565151214599609,
+      "max": 17.77910304069519
+    },
+    "mixture_si_sdr_baseline": {
+      "mean": -0.01468353849525253,
+      "sd": 0.1842824326323541,
+      "min": -0.8494477272033691,
+      "max": 0.6755838394165039
+    },
+    "improvement_over_first_epoch": {
+      "mean": 4.519869462599357,
+      "sd": 3.0385459994138935,
+      "min": -5.460143804550171,
+      "max": 19.520162105560303
+    },
+    "q_pruned_long": {
+      "mean": 13.089931043783823,
+      "sd": 1.6575422442551317,
+      "min": 7.464785575866699,
+      "max": 17.92209243774414
+    },
+    "gap_db_long": {
+      "mean": 0.9864487767219543,
+      "sd": 0.48285885880943824,
+      "min": -4.584075927734375,
+      "max": 4.605016708374023
+    }
+  },
+  "teacher_memorization_db": 2.6833870713909462,
+  "collinearity": {
+    "hard": {
+      "rho_with_hard_mining": 1.0,
+      "rho_with_q_dense": -0.45309798082772457,
+      "rho_with_gap_at_1ep": 0.3658824052289034,
+      "rho_with_first_epoch_improvement": 0.6494198039438999
+    },
+    "gap_db": {
+      "rho_with_hard_mining": 0.808966802685563,
+      "rho_with_q_dense": 0.08181239392331645,
+      "rho_with_gap_at_1ep": 0.4842240672890758,
+      "rho_with_first_epoch_improvement": 0.8002243895121931
+    },
+    "gap_rank": {
+      "rho_with_hard_mining": 0.4965397126103129,
+      "rho_with_q_dense": 0.5130254250706252,
+      "rho_with_gap_at_1ep": 0.42936024822291174,
+      "rho_with_first_epoch_improvement": 0.6915930322028672
+    }
+  },
+  "subset_overlap": {
+    "S2_hard|S3_gap_db": 0.8222222222222222,
+    "S2_hard|S3p_gap_rank": 0.6311111111111111,
+    "S3_gap_db|S3p_gap_rank": 0.8088888888888889
+  },
+  "random_overlap_reference": 0.375,
+  "selected_subset_means": {
+    "S2_hard": {
+      "q_dense": 13.391715138753256,
+      "q_pruned_at_init": 2.928577775690291,
+      "snr_abs": 2.1414
+    },
+    "S3_gap_db": {
+      "q_dense": 14.135994283888076,
+      "q_pruned_at_init": 3.2745458674430847,
+      "snr_abs": 2.0985869333333333
+    },
+    "S3p_gap_rank": {
+      "q_dense": 14.794908010694716,
+      "q_pruned_at_init": 4.389252286222246,
+      "snr_abs": 2.1977331111111114
+    },
+    "full_set": {
+      "q_dense": 14.076379820505778,
+      "q_pruned_at_init": 6.694635970095794,
+      "snr_abs": 2.53152505
+    }
+  },
+  "score_staleness": {
+    "rho_gap_db_init_vs_1ep": 0.4842240672890758,
+    "overlap_gap_db_init_vs_1ep": 0.6044444444444445,
+    "rho_gap_rank_init_vs_1ep": 0.42936024822291174,
+    "rho_gap_db_init_vs_long": 0.2528034244539568,
+    "overlap_gap_db_init_vs_long": 0.4622222222222222,
+    "rho_gap_rank_init_vs_long": 0.24589484970791586
+  },
+  "elapsed_seconds": 147.62776569556445
+}

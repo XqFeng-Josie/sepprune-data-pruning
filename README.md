@@ -100,6 +100,7 @@ reproduction/               models, training, evaluation, physical pruning
 docs/                       plan of record, pre-registration, daily log, results
   数据剪枝与模型剪枝协同方案调研.md   design + pre-registered protocol + per-workpoint results
   实验结果总报告.md                    consolidated results across both lines
+  TDANet复现流程详解.md                step-by-step TDANet pipeline
   复现实验日志.md                      dated log, including every decision and mishap
 scripts/                    bootstrap, dataset download, experiment launchers
 tools/export_results.py     extracts the committable slice of an experiment tree

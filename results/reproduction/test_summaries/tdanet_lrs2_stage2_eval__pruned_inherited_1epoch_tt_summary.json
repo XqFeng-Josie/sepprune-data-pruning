@@ -1,0 +1,11 @@
+{
+  "model": "pruned_inherited_1epoch",
+  "split": "tt",
+  "count": 3000,
+  "paper_original_tdanet_lrs2_sdri": 12.74,
+  "paper_original_tdanet_lrs2_si_sdri": 12.45,
+  "sdr": 13.190809038420518,
+  "sdri": 12.956231519500415,
+  "si_sdr": 12.624488478014866,
+  "si_sdri": 12.625262349531054
+}

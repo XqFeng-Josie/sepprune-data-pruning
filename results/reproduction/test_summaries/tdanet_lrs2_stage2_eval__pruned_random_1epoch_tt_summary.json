@@ -1,0 +1,11 @@
+{
+  "model": "pruned_random_1epoch",
+  "split": "tt",
+  "count": 3000,
+  "paper_original_tdanet_lrs2_sdri": 12.74,
+  "paper_original_tdanet_lrs2_si_sdri": 12.45,
+  "sdr": 4.076375465109944,
+  "sdri": 3.8417979434082907,
+  "si_sdr": 1.9724102849432579,
+  "si_sdri": 1.9731841607370104
+}

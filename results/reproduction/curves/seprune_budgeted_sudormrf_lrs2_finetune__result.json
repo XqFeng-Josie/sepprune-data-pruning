@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "stop_reason": "early_stopped",
+  "model": "sudormrf",
+  "parameters": 1539895,
+  "global_step": 4720000,
+  "best_val_si_sdr": 9.180906290525199,
+  "elapsed_seconds_this_run": 686292.0058344286,
+  "output_dir": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_sudormrf_lrs2_finetune"
+}

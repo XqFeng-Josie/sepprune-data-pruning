@@ -1,0 +1,18 @@
+{
+  "model": "sudormrf",
+  "label": "budgeted_converged",
+  "checkpoint": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_sudormrf_lrs2_finetune/best.pt",
+  "masks": "/home/xiaoqin_feng/workspace/SepPrune/AAAI-26_SepPrune/experiments/seprune_budgeted_sudormrf_lrs2_e07_seed2026/masks.pt",
+  "split": "tt",
+  "count": 3000,
+  "parameters": 1539895,
+  "paper_original_sdri": 11.43,
+  "paper_original_si_sdri": 11.1,
+  "paper_pruned_parameters": 1540000,
+  "paper_pruned_sdri": 10.37,
+  "paper_pruned_si_sdri": 9.98,
+  "sdr": 10.025728636955222,
+  "sdri": 9.791151117304961,
+  "si_sdr": 9.33515302577118,
+  "si_sdri": 9.335926804651816
+}
